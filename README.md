@@ -1,2 +1,2 @@
 # Puzzle
-It's my implementation for a puzzle game.
+It's my implementation for the game.
