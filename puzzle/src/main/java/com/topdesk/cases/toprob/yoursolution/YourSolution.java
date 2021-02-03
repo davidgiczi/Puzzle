@@ -46,9 +46,7 @@ public class YourSolution implements Solution {
 		while (!isKitchenCell(actualPositionOfRob, grid)) {
 			storeNeighboursCellsOfBob(grid);
 			removeHoleAndExistedRouteCellFromNeighbourCells(grid);
-			System.out.println(neighboursCoordinates);
 			Coordinate theClosest = getTheClosestCellFromNeighbourCellsToTargetCell(grid.getKitchen());
-			System.out.println(theClosest);
 			if (!isBugOneSecLater(theClosest, grid, time)) {
 				routeCoordinates.add(theClosest);
 				actualPositionOfRob = theClosest;
@@ -114,7 +112,7 @@ public class YourSolution implements Solution {
 	}
 
 	private Coordinate getTheClosestCellFromNeighbourCellsToTargetCell(Coordinate targetCell) {
-		
+
 		if (neighboursCoordinates.size() == 1) {
 			return neighboursCoordinates.get(0);
 		} else if (neighboursCoordinates.contains(targetCell)) {
@@ -122,21 +120,20 @@ public class YourSolution implements Solution {
 		}
 
 		Coordinate theClosest = neighboursCoordinates.get(0);
-		int minDistance = Math.abs(targetCell.getX() - neighboursCoordinates.get(0).getX()) + Math.abs(targetCell.getY()
-				- neighboursCoordinates.get(0).getY());
+		int minDistance = Math.abs(targetCell.getX() - neighboursCoordinates.get(0).getX())
+				+ Math.abs(targetCell.getY() - neighboursCoordinates.get(0).getY());
 
-		
 		for (Coordinate coord : neighboursCoordinates) {
 
 			int distance = Math.abs(targetCell.getX() - coord.getX()) + Math.abs(targetCell.getY() - coord.getY());
-			
+
 			if (minDistance > distance) {
 				minDistance = distance;
 				theClosest = coord;
 			}
 
 		}
-		
+
 		return theClosest;
 	}
 
@@ -191,6 +188,5 @@ public class YourSolution implements Solution {
 	private boolean isBugOneSecLater(Coordinate coord, Grid grid, int time) {
 		return coord.equals(grid.getBug(time + 1));
 	}
-	
-	
+
 }
